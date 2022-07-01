@@ -1,5 +1,9 @@
 {
   "name": "hardhat-project",
+  "scripts": {
+    "token": "hh deploy --tags token && hh run ./scripts/05-token.js",
+    "reentrancy": "hh deploy --tags reentrancy && hh run ./scripts/10-reentrancy.js"
+  },
   "devDependencies": {
     "@nomiclabs/hardhat-ethers": "npm:hardhat-deploy-ethers@^0.3.0-beta.13",
     "@nomiclabs/hardhat-waffle": "^2.0.3",

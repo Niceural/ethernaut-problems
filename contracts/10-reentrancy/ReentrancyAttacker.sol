@@ -35,4 +35,9 @@ contract ReentrancyAttacker {
     receive() external payable {
         reenter();
     }
+
+    function emptyContract() public {
+        uint256 balance = address(this).balance;
+        msg.sender.call{value: balance}("");
+    }
 }

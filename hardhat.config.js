@@ -90,8 +90,5 @@ module.exports = {
     deployer: {
       default: 0,
     },
-    caller: {
-      default: 1,
-    },
   },
 };
