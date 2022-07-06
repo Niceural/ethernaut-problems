@@ -1,7 +1,7 @@
 {
   "name": "hardhat-project",
   "scripts": {
-    "token": "hh deploy --tags token && hh run ./scripts/05-token.js",
+    "token": "hh run ./scripts/05-token.js",
     "reentrancy": "hh deploy --tags reentrancy && hh run ./scripts/10-reentrancy.js"
   },
   "devDependencies": {

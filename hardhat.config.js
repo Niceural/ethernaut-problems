@@ -90,5 +90,8 @@ module.exports = {
     deployer: {
       default: 0,
     },
+    account1: {
+      default: 1,
+    },
   },
 };
