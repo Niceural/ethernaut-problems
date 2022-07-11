@@ -1,6 +1,7 @@
 {
   "name": "hardhat-project",
   "scripts": {
+    "fallback": "hh run ./scripts/01-fallback.js",
     "token": "hh run ./scripts/05-token.js",
     "reentrancy": "hh deploy --tags reentrancy && hh run ./scripts/10-reentrancy.js"
   },

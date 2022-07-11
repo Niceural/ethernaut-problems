@@ -52,6 +52,14 @@ npm run <problem_name>
 
 ## Problem solutions
 
+### [1. Fallback](https://ethernaut.openzeppelin.com/level/0x9CB391dbcD447E645D6Cb55dE6ca23164130D008)
+
+The attacker first contributes to the Fallback contract to be allowed to send ETH to the contract. The attacker then sends ETH to the Fallback contract resulting in the owner address of the contract being changed to the attacker's. Finally, the attacker calls the withdraw() function and the balance of the Fallback contract is transferred to the attacker. To run the solution:
+
+```
+$ npm run fallback
+```
+
 ### [5. Token](https://ethernaut.openzeppelin.com/level/0x63bE8347A617476CA461649897238A31835a32CE)
 
 When `Token.transfer()` checks if the sender has enough balance, it does not perform an underflow check for `uint256`. Therefore, although the actual value of `balances[msg.sender] - _value` is negative, it will be stored as a positive (and most likely very big) number with a `uint256` data type. The owner of the 20 tokens can just transfer any amount of tokens to a receiver, making sure that the receiver's balance does not overflow.
