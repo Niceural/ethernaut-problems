@@ -2,6 +2,9 @@
   "name": "hardhat-project",
   "scripts": {
     "fallback": "hh run ./scripts/01-fallback.js",
+    "fallout": "hh run ./scripts/02-fallout.js",
+    "coinFlip": "hh run ./scripts/03-coin-flip.js",
+    "telephone": "hh run ./scripts/04-telephone.js",
     "token": "hh run ./scripts/05-token.js",
     "reentrancy": "hh deploy --tags reentrancy && hh run ./scripts/10-reentrancy.js"
   },

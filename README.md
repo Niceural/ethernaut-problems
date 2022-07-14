@@ -60,6 +60,30 @@ The attacker first contributes to the Fallback contract to be allowed to send ET
 $ npm run fallback
 ```
 
+### [2. Fallout](https://ethernaut.openzeppelin.com/level/0x5732B2F88cbd19B6f01E3a96e9f0D90B917281E5)
+
+To claim ownership of the Fallout contract, simply call the Fal1out function on the contract and the contract owner will be set to the caller. To run the solution:
+
+```
+$ npm run fallback
+```
+
+### [3. Coin Flip](https://ethernaut.openzeppelin.com/level/0x4dF32584890A0026e56f7535d0f2C6486753624f)
+
+To guess the correct outcome we simply need to copy and paste the logic for computing the outcome to the attacker contract and pass it to the flip method of the CoinFlip contract. To run the solution:
+
+```
+$ npm run coinFlip
+```
+
+### [4. Telephone](https://ethernaut.openzeppelin.com/level/0x0b6F6CE4BCfB70525A31454292017F640C10c768)
+
+To claim ownership of the contract we create a contract which will call the changeOwner for us. That way `msg.sender` will be the address of the attacker contract and `tx.origin` will be the address of the attacker account calling on the attacker contract. To run the solution:
+
+```
+$ npm run telephone
+```
+
 ### [5. Token](https://ethernaut.openzeppelin.com/level/0x63bE8347A617476CA461649897238A31835a32CE)
 
 When `Token.transfer()` checks if the sender has enough balance, it does not perform an underflow check for `uint256`. Therefore, although the actual value of `balances[msg.sender] - _value` is negative, it will be stored as a positive (and most likely very big) number with a `uint256` data type. The owner of the 20 tokens can just transfer any amount of tokens to a receiver, making sure that the receiver's balance does not overflow.
