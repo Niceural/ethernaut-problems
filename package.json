@@ -6,7 +6,8 @@
     "coinFlip": "hh run ./scripts/03-coin-flip.js",
     "telephone": "hh run ./scripts/04-telephone.js",
     "token": "hh run ./scripts/05-token.js",
-    "reentrancy": "hh deploy --tags reentrancy && hh run ./scripts/10-reentrancy.js"
+    "reentrancy": "hh deploy --tags reentrancy && hh run ./scripts/10-reentrancy.js",
+    "vault": "hh run ./scripts/08-vault.js"
   },
   "devDependencies": {
     "@nomiclabs/hardhat-ethers": "npm:hardhat-deploy-ethers@^0.3.0-beta.13",
